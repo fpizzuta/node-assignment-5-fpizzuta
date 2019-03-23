@@ -1,0 +1,15 @@
+html
+  head
+    title Login Page
+    link(href='/css/style.css', rel='stylesheet')
+  body
+    .box
+      h2 Push Notification Login
+      form(method='GET' action='/users/user')
+        .inputBox
+          input(type="text",name="username",required="")
+          label Username
+        .inputBox
+          input(type="text",name="password",required="")
+          label Password
+        input(type="submit",name="",value="Submit")
