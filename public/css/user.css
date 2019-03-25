@@ -47,6 +47,14 @@ body {
    margin-top: 20px;
 }
 
+.edit {
+  float:right;
+}
+
+.edit a {
+  padding-right: 10px;
+}
+
 /* Clear floats after the columns */
 .row:after {
   content: "";

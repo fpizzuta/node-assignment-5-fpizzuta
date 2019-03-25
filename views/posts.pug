@@ -12,8 +12,8 @@ html(lang='en')
           .card
             h2 #{post.title} to #{post.audience}
               .edit
-                a(href='/posts/edit/') Edit
-                a(href='/posts/delete') Delete
+                a(href='/posts/edit/' + post._id) Edit
+                a(href='/posts/delete/' + post._id) Delete
             h5 #{post.date}
             .fakeimg(style='height:200px;') #{post.image}
             p #{post.message}

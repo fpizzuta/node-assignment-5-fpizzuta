@@ -1,0 +1,24 @@
+html
+  head
+    title New Notification
+    link(href='/css/style.css', rel='stylesheet')
+  body
+    .box
+      h2 New Notification
+      form(method='post' action='/posts/newpost')
+        .inputBox
+          input(type="text",name="title",required="")
+          label Title
+        .inputBox
+          input(type="date",name="date",required="")
+         
+        .inputBox
+          input(type="text",name="audience",required="")
+          label Audience
+        .inputBox
+          input(type="text",name="image",required="")
+          label Image
+        .inputBox
+          input(type="text",name="message",required="")
+          label Message
+        input(type="submit",name="",value="Submit")
