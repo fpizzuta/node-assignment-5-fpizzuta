@@ -33,6 +33,7 @@ app.set('view engine', 'pug');  // tells express to use pug as the template engi
 
 app.use('/delete', posts);
 app.use('/newpost', posts);
+app.use('/updatepost', posts);
 app.use('/posts', posts);
 app.use('/create', posts);
 app.use('/users', users);

@@ -117,6 +117,46 @@ router.get('/delete/:postID', (req, res, next)=>{
 		});
 });
 
+router.post('/edit/:postID', (req, res, next)=>{
+	const postData ={
+		username: req.query.username,
+		title: req.body.title,
+		date: req.body.date,
+		audience: req.body.audience,
+		image: req.body.image,
+		message: req.body.message
+	};
+	Post.findOneAndUpdate({'_id':req.params.postID}, postData)
+		.then(()=>{
+			res.redirect('/posts');
+		})
+		.catch((err)=>{
+		    if (err){
+		      console.log(err);
+		      throw new Error("PostEditError", post);
+		    }
+		});
+});
+
+router.get('/edit/:postID', (req, res, next)=>{
+	Post.findOne({'_id': req.params.postID})
+		.then((post)=>{
+			var postData = {
+				username : req.query.username,
+			 	post : post
+			    
+			}
+			console.log(postData);
+
+			res.render('editpost', postData);
+		})
+		.catch((err)=>{
+		  if (err) {
+		    res.end("EDIT LOAD ERROR!");
+		  }
+		});
+});
+
 router.use(function(err, req, res, next){
   console.error(err.stack);
   if (err.message == "PostDeleteError"){
@@ -124,6 +164,9 @@ router.use(function(err, req, res, next){
       res.redirect('/posts');
   } else if (err.message == "PostSaveError"){
     req.flash('photoSaveError', "There was a problem creating your post.");
+    res.redirect('/posts');
+  } else if (err.message == "PostEditError"){
+    req.flash('photoSaveError', "There was a problem editing your post.");
     res.redirect('/posts');
   } else{
      next(err);
