@@ -5,6 +5,8 @@ html(lang='en')
     link(href='/css/user.css', rel='stylesheet')
   body
     .header
+      if flashMsg.length > 0
+        .alert #{flashMsg}
       h2 Push Notifications by #{username}
     .row
       .leftcolumn

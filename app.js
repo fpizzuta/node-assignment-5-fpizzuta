@@ -8,6 +8,7 @@ const bodyparser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
+// var flash = require('connect-flash');
 require('dotenv').config();
 
 
@@ -18,7 +19,7 @@ mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@cluster
   });
 
  
-
+// app.use(flash()); 
 app.use(cookieParser('cscie31-secret'));
 app.use(session({
   secret:"cscie31",
@@ -33,7 +34,7 @@ app.set('view engine', 'pug');  // tells express to use pug as the template engi
 
 app.use('/delete', posts);
 app.use('/newpost', posts);
-app.use('/updatepost', posts);
+app.use('/edit', posts);
 app.use('/posts', posts);
 app.use('/create', posts);
 app.use('/users', users);

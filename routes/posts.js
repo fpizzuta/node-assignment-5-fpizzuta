@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const flash = require('express-flash');
 const Post = require('../models/postModel');
+var flash = require('connect-flash');
 
 router.use(flash());
 
@@ -10,8 +10,8 @@ router.get('/', (req, res, next)=>{
 		.then((posts)=>{
 			var response = {
 				username : req.query.username,
-			 	posts : posts
-			    
+			 	posts : posts,
+			    flashMsg: req.flash('flashMsg')
 			}
 			console.log(response);
 			res.render('posts', response);
@@ -94,6 +94,7 @@ router.post('/newpost', (req, res, next)=>{
 	var post = new Post(postData);
 	post.save()
 		.then(()=>{
+			req.flash('flashMsg', "Notification created successfully");
 			res.redirect('/posts');
 		})
 		.catch((err)=>{
@@ -107,6 +108,7 @@ router.post('/newpost', (req, res, next)=>{
 router.get('/delete/:postID', (req, res, next)=>{
 	Post.findOneAndDelete({'_id': req.params.postID})
 		.then(()=>{
+			req.flash('flashMsg', "Notification deleted successfully");
 			res.redirect('/posts')
 		})
 		.catch((err)=>{
@@ -128,6 +130,7 @@ router.post('/edit/:postID', (req, res, next)=>{
 	};
 	Post.findOneAndUpdate({'_id':req.params.postID}, postData)
 		.then(()=>{
+			req.flash('flashMsg', "Notification edited successfully");
 			res.redirect('/posts');
 		})
 		.catch((err)=>{
