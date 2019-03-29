@@ -77,7 +77,7 @@ body {
   margin-bottom: 15px;
   opacity: 0;
   font-size: .5em;
-  visibility: : hidden;
+  /*visibility: : hidden;*/
   transition: visibility 0s 2s, opacity 2s linear; 
 }
 
