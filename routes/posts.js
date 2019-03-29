@@ -8,8 +8,17 @@ router.use(flash());
 router.get('/', (req, res, next)=>{
 	Post.find({}).sort({date:-1})
 		.then((posts)=>{
+			if (req.session.username) {
+				var userName = req.session.username
+				console.log('old Session ' + userName);
+			} else {
+				req.session.username = req.query.username;
+				userName = req.query.username;
+				console.log('New Session ' + userName);
+			}
 			var response = {
-				username : req.query.username,
+				// username : req.query.username,
+				username : userName,
 			 	posts : posts,
 			    flashMsg: req.flash('flashMsg')
 			}
