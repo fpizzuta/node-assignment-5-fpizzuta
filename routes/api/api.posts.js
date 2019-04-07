@@ -55,4 +55,43 @@ router.put('/:postid', (req, res, next)=>{
     });
  });
 
+ router.post('/', async (req, res, next)=>{
+   const post  = {
+        username: req.query.username,
+		title: req.body.title,
+		date: req.body.date,
+		audience: req.body.audience,
+		image: req.body.image,
+		message: req.body.message
+       }
+
+  try{
+     const postSave = await PostService.create(post);
+     res.status(201);
+     res.send(JSON.stringify(post));
+   }catch(err){
+     console.log(err);
+     throw new Error("PostSaveError", post);
+   }
+ });
+
+ router.delete('/:postid', (req, res, next)=>{
+  let id = req.params.postid;
+  PostService.delete(req.params.postid)
+    .then((post) => {
+     console.log(`Deleted post: ${id}`);
+     res.status(200);
+     res.send(JSON.stringify(post));
+   }).catch((err)=> {
+     res.status(404);
+     res.end();
+   });;
+});
+
+ router.use(function(err, req, res, next){
+  console.error(err);
+  res.status(500);
+  res.end();
+});
+
 module.exports = router;

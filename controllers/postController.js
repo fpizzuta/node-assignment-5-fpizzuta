@@ -26,6 +26,19 @@ class PostService {
          return post;
        });
   	}
+
+  	static create(obj){
+	    const post = new Post(obj);
+	    return post.save();
+  	}
+
+  	static delete(id){
+    return Post.deleteOne({_id: id})
+      .then((obj)=>{
+        //removed
+        return obj;
+      })
+  }
 		
 }
 
