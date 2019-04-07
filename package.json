@@ -1,7 +1,7 @@
 {
-  "name": "assignment-4-fpizzuta",
+  "name": "assignment-5-fpizzuta",
   "version": "1.0.0",
-  "description": "The description of this assignment can be found in Canvas at [Assignment #3](https://canvas.harvard.edu/courses/54354/assignments/249112) (Spring 2019)",
+  "description": "Assignment 5",
   "main": "app.js",
   "scripts": {
     "start": "node ./bin/www",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HarvardDCENode/assignment-4-fpizzuta.git"
+    "url": "git+https://github.com/HarvardDCENode/assignment-5-fpizzuta.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/HarvardDCENode/assignment-4-fpizzuta/issues"
+    "url": "https://github.com/HarvardDCENode/assignment-5-fpizzuta/issues"
   },
-  "homepage": "https://github.com/HarvardDCENode/assignment-4-fpizzuta#readme",
+  "homepage": "https://github.com/HarvardDCENode/assignment-5-fpizzuta#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",

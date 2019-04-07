@@ -7,6 +7,7 @@ var posts = require('./routes/posts');
 const bodyparser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const apiposts = require('./routes/api/api.posts');
 const mongoose = require('mongoose');
 // var flash = require('connect-flash');
 require('dotenv').config();
@@ -26,7 +27,8 @@ app.use(session({
   resave: "true",
   saveUninitialized: "true"
 }));
-app.use(bodyparser.urlencoded({extended: false}));
+app.use(bodyparser.urlencoded({extended: true}));
+app.use(bodyparser.json());
 
 
 app.set('views', './views');    // tells express where to find the views
@@ -41,6 +43,8 @@ app.use('/users', users);
 app.use('/user', users);
 app.use('/login', login);
 app.use('/', login);
+
+app.use('/api/posts', apiposts);
 
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', express.static('./public'));

@@ -20,5 +20,10 @@ schema.pre('save', function(next){
   next();
 });
 
+schema.pre('update', function(next) {
+  this.updatedAt = new Date();
+  next();
+});
+
 module.exports = mongoose.model("Post", schema);
 
