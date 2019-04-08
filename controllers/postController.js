@@ -3,7 +3,7 @@ const Post = require('../models/postModel');
 class PostService {
 
 	static list(){
-	    return Post.find({})
+	    return Post.find({}).sort({date:-1})
 	      .then((posts)=>{
 	        // all posts
 	        return posts;

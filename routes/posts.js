@@ -22,6 +22,8 @@ router.get('/', (req, res, next)=>{
 			 	posts : posts,
 			    flashMsg: req.flash('flashMsg')
 			}
+
+			
 			console.log(response);
 			res.render('posts', response);
 		})

@@ -68,7 +68,7 @@ router.put('/:postid', (req, res, next)=>{
   try{
      const postSave = await PostService.create(post);
      res.status(201);
-     res.send(JSON.stringify(post));
+     res.send(JSON.stringify(postSave));
    }catch(err){
      console.log(err);
      throw new Error("PostSaveError", post);
