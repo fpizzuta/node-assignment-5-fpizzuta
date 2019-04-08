@@ -1,7 +1,7 @@
 // wrap in IIFE to control scope
 (function(){
 
-   const baseURL = 'http://localhost:8081';
+   const baseURL = 'http://node.pizzuta.com:8082';
 
    function testAPIs(){
     // test list first
